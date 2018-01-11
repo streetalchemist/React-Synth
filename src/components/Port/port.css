@@ -1,0 +1,146 @@
+.port {
+	border-radius:50%;
+	border: 1px solid #000;
+	background:#000;
+	width:2rem;
+	height:2rem;
+}
+
+.port-inner {
+	margin-top: 25%;
+  	margin-left: 25%;
+  	width: 50%;
+  	height: 50%;
+  	border-radius: 50%;
+}
+
+.port.port-connected {
+
+}
+
+.port .port-value {
+	float:left;
+	margin-top:.5rem;
+	margin-left:3rem;
+	width:10rem;
+}
+
+.port-inner_0 {
+	background-color:navy;
+}
+
+.port-inner_1 {
+	background-color:#0074D9;
+}
+
+.port-inner_2 {
+	background-color:#7FDBFF;
+}
+
+.port-inner_3 {
+	background-color:#39CCCC;
+}
+
+.port-inner_4 {
+	background-color:#3D9970;
+}
+
+.port-inner_5 {
+	background-color:#2ECC40;
+}
+
+.port-inner_6 {
+	background-color:#01FF70;
+}
+
+.port-inner_7 {
+	background-color:#FFDC00;
+}
+
+.port-inner_8 {
+	background-color:#FF851B;
+}
+
+.port-inner_9 {
+	background-color:#FF4136;
+}
+
+.port-inner_10 {
+	background-color:#85144b;
+}
+
+.port-inner_11 {
+	background-color:#F012BE;
+}
+
+.port-inner_12 {
+	background-color:#B10DC9;
+}
+
+.port-inner_13 {
+	background-color:#AAAAAA;
+}
+
+.port-inner_14 {
+	background-color:#DDDDDD;
+}
+
+.port-outer_0 {
+	background-color:navy;
+}
+
+.port-outer_1 {
+	background-color:#0074D9;
+}
+
+.port-outer_2 {
+	background-color:#7FDBFF;
+}
+
+.port-outer_3 {
+	background-color:#39CCCC;
+}
+
+.port-outer_4 {
+	background-color:#3D9970;
+}
+
+.port-outer_5 {
+	background-color:#2ECC40;
+}
+
+.port-outer_6 {
+	background-color:#01FF70;
+}
+
+.port-outer_7 {
+	background-color:#FFDC00;
+}
+
+.port-outer_8 {
+	background-color:#FF851B;
+}
+
+.port-outer_9 {
+	background-color:#FF4136;
+}
+
+.port-outer_10 {
+	background-color:#85144b;
+}
+
+.port-outer_11 {
+	background-color:#F012BE;
+}
+
+.port-outer_12 {
+	background-color:#B10DC9;
+}
+
+.port-outer_13 {
+	background-color:#AAAAAA;
+}
+
+.port-outer_14 {
+	background-color:#DDDDDD;
+}

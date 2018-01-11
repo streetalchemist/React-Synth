@@ -1,0 +1,32 @@
+h1, h2, h3, h4, h5, h6 {
+  margin-top:0;
+}
+
+body {
+  font-family:sans-serif;
+}
+
+.component-label {
+	display:block;
+}
+
+label {
+	display:block;
+}
+
+.synth {
+  	border: 1px solid #000000;
+  	padding:2rem 1rem;
+}
+
+.module-container {
+	display: flex;
+  	flex-direction: row;
+}
+
+.module {
+  border: 1px solid #333333;
+  width:15rem;
+  height:25rem;
+  padding:.5rem;
+}

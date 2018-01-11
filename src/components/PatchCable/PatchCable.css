@@ -1,0 +1,10 @@
+.patchcable {
+	display:none;
+}
+
+.patchcable svg {
+	position:absolute;
+	top:0;
+	left:0;
+	stroke-width:10;
+}
