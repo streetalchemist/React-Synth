@@ -1,4 +1,4 @@
-#React Synth
+# React Synth
 
 React Synth is a React based modular synthesizer using the WebAudio API.
 
