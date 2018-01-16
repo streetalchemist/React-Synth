@@ -17,6 +17,8 @@ label {
 .synth {
   	border: 1px solid #000000;
   	padding:2rem 1rem;
+    background:black;
+    color:white;
 }
 
 .module-container {
@@ -29,4 +31,6 @@ label {
   width:15rem;
   height:25rem;
   padding:.5rem;
+  background:white;
+  color:black;
 }

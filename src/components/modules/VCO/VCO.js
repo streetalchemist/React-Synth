@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Port from '../Port/Port';
+import Port from '../../core/Port/Port';
 
 class VCO extends Component {
   constructor() {

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import MainOut from '../MainOut/MainOut';
-import VCO from '../VCO/VCO';
-import VCF from '../VCF/VCF';
-import TestModule from '../TestModule/TestModule';
+import VCO from '../../modules/VCO/VCO';
+import VCF from '../../modules/VCF/VCF';
+import TestModule from '../../modules/TestModule/TestModule';
 import PatchCable from '../PatchCable/PatchCable';
+import EightStepSeq from '../../modules/EightStepSeq/EightStepSeq';
 import './Synth.css';
 
 class Synth extends Component {
@@ -27,7 +28,7 @@ class Synth extends Component {
           type:'vcf',
         },
         {
-          type:'testModule',
+          type:'eightStepSeq',
         }
       ],
       cables:[]
@@ -43,6 +44,8 @@ class Synth extends Component {
           return <VCF key={index} ctx={this.audioCtx} handlePortConnect={this.handlePortConnect} />;
         case 'testModule':
           return <TestModule key={index} ctx={this.audioCtx} handlePortConnect={this.handlePortConnect} />;
+        case 'eightStepSeq':
+          return <EightStepSeq key={index} ctx={this.audioCtx} handlePortConnect={this.handlePortConnect} />;
         default:
           return '';
       }
