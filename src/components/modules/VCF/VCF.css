@@ -1,0 +1,123 @@
+.module.vcf {
+	width: 8.3125rem;
+	background-image: url(./img/rsvcf_bg.png);
+	background-size:contain;
+	color:#ccc;
+	font-weight:300;
+}
+
+.module-vcf-knob-holder {
+	position:relative;
+	top:3.57rem;
+	left:1.9rem;
+}
+
+.module-vcf-frequency-knob {
+	width:74px;
+	height:74px;
+	background-image: url(./img/rsvcf_big_knob.png);
+	background-size:contain;
+}
+
+.module-vcf-cutoff-holder {
+	padding-left:1rem;
+	margin-top:4.5rem;
+}
+
+.module-vcf-cutoff-counter {
+	font-family:'Roboto Mono', monospace;
+	background:#f2be57;
+	width:3rem;
+	border-radius: 3px;
+	color:#222;
+	text-align: center;
+	float:right;
+	margin-right:1rem;
+}
+
+
+.module-vcf-type-set {
+	text-align:center;
+	margin-left:0.2rem;
+	margin-top:2.5rem;
+}
+
+.module-vcf-radio {
+	display: inline-block;
+    position: relative;
+    padding:0;
+    margin:0;
+    margin-left:.4rem;
+    width:2rem;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.module-vcf-radio input {
+    position: relative;
+    margin:0;
+    padding:0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.module-vcf-radio-checkmark {
+	position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #555;
+    border-radius: 50%;
+}
+
+.module-vcf-radio:hover input ~ .module-vcf-radio-checkmark {
+    background-color: #ccc;
+}
+
+.module-vcf-radio input:checked ~ .module-vcf-radio-checkmark {
+    background-color: #dfbd51;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.module-vcf-radio-checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.module-vcf-radio input:checked ~ .module-vcf-radio-checkmark:after {
+    display: block;
+}
+
+.module-vcf-radio .module-vcf-radio-checkmark:after {
+ 	top: 5px;
+	left: 5px;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: #000;
+}
+
+
+
+
+.module-vcf-ports {
+	width:100%;
+	position:absolute;
+	bottom:1rem;
+	text-align: center
+}
+
+.module-vcf-ports label {
+	width: 4rem;
+	display:inline-block;
+}
+
+.module-vcf-ports .port {
+	margin:.5rem auto;
+}
