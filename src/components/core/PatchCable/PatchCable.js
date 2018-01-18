@@ -29,7 +29,7 @@ class PatchCable extends Component {
       return;
     }
 
-
+    console.log("TRY");
 
     this.props.portA.updateCable(this);
     this.props.portB.updateCable(this);
@@ -44,6 +44,9 @@ class PatchCable extends Component {
       }
       this.setState({outputPort:this.props.portB});
     }
+
+    console.log(this.props.portA);
+    console.log(this.props.portB);
 
     //Set offsets for patch cable drawing TODO
     this.setState({

@@ -2,6 +2,8 @@
 
 React Synth is a React based modular synthesizer using the WebAudio API.
 
+View the current version of the live synth at [https://streetalchemist.github.io/React-Synth/](https://streetalchemist.github.io/React-Synth/)
+
 Initially created as a personal project to learn React, I decided to turn this into an open source project as I'm really enthusiastic about modular synths in the physical world and would love to see lots of web-based modules built to see how we can push the limits of WebAudio.
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app). For all major deployment instructions check the guide [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
@@ -17,6 +19,20 @@ To build the project, run `npm run build` which builds the app for production to
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
 See the Create React App [guide](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md) for more information.
+
+## Roadmap
+
+This project is in its very early stages. Right now it's little more than a tone generator but eventually I hope for it to be a fun piece of software to create new sounds, learn the basics of synthesis, and even create some pretty killer tracks. That all being said I have a few ideas for the next steps and where my intention to take the project is.
+
+- More modules, some of which are under development currently and some of which are just hopes for future dev
+	- ADSR Enveloper Generation
+	- Mixer (Under development currently)
+	- VCA
+	- Keyboard to CV/Gate
+	- Drum Sequencer
+	- Quantizer
+
+- Some standard controls like knobs/sliders/etc. for people to begin building their own modules with (as well as some deep instruction in the structure and creation of these modules).
 
 
 ## Changelog

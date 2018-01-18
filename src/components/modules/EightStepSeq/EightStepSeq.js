@@ -109,7 +109,7 @@ class EightStepSeq extends Component {
         </div>
         <div className="module-eight-step-seq-ports">
           <label>
-            <Port type="output" content={currentNoteFreq} contentType="value" handlePortConnect={this.props.handlePortConnect} />out
+            <Port type="output" content={currentNoteFreq} contentType="value" handlePortConnect={this.props.handlePortConnect} />1v/oct out
           </label>
         </div>
       </div>

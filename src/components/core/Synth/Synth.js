@@ -5,6 +5,7 @@ import VCF from '../../modules/VCF/VCF';
 import TestModule from '../../modules/TestModule/TestModule';
 import PatchCable from '../PatchCable/PatchCable';
 import EightStepSeq from '../../modules/EightStepSeq/EightStepSeq';
+import Mx101 from '../../modules/Mx101/Mx101';
 import './Synth.css';
 
 class Synth extends Component {
@@ -22,6 +23,7 @@ class Synth extends Component {
       {name:"rsvco - (vco)",type:"vco"},
       {name:"rsvcf - (vcf)",type:"vcf"},
       {name:"8 Step - (sequencer)",type:"eightStepSeq"},
+      {name:"Mx-101 - (mixer)",type:"mx101"},
     ];
     this.state = {
       modules:[
@@ -90,6 +92,8 @@ class Synth extends Component {
           return <TestModule key={index} ctx={this.audioCtx} handlePortConnect={this.handlePortConnect} />;
         case 'eightStepSeq':
           return <EightStepSeq key={index} ctx={this.audioCtx} handlePortConnect={this.handlePortConnect} />;
+        case 'mx101':
+          return <Mx101 key={index} ctx={this.audioCtx} handlePortConnect={this.handlePortConnect} />;
         default:
           return '';
       }
