@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Port from '../../core/Port/Port';
+import './MainOut.css';
 
 class MainOut extends Component {
   constructor() {
@@ -37,21 +38,24 @@ class MainOut extends Component {
   render() {
     return (
       <div className="module main-out">
-        <h4>Main Output</h4>
-        <label>
-          Power
+        <h4>Main</h4>
+        <label className="main-out-centered-label standard-checkbox main-out-power-label">power
           <input
             name="isPowered"
             type="checkbox"
             checked={this.state.isPowered}
             onChange={this.handlePower} />
+          <span className="checkmark"></span>
         </label>
-        <label>Volume:
-          0<input type="range" name="volume" min="0" max="100" step="1" defaultValue={this.initialVolume} onChange={this.changeVolume} />11
-         </label>
-         <label>Input:
-          <Port type="input" contentType="audioNode" content={this.state.gainNode} handlePortConnect={this.props.handlePortConnect}  />
-         </label>
+        <label className="main-out-centered-label main-out-gain-label">gain</label>
+        <div className="standard-slider standard-slider-vertical main-out-slider-gain">
+          <input type="range" name="volume" min="0" max="100" step="1" defaultValue={this.initialVolume} onChange={this.changeVolume} />
+        </div>
+        <div className="main-out-ports">
+          <label>input
+            <Port type="input" contentType="audioNode" content={this.state.gainNode} handlePortConnect={this.props.handlePortConnect}  />
+          </label>
+        </div>
       </div>
     );
   }

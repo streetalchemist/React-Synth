@@ -1,9 +1,105 @@
-.module-eight-step-seq {
-
+.module.eight-step-seq {
+	background-image: url(./img/eightstep_bg.png);
+	background-size:contain;
+	width:15rem;
+	color:#999;
+	font-weight:300;
 }
 
-
-
-.module-eight-step-seq .note-slider.active {
+.eight-step-seq .note-slider.active {
 	outline:1px solid blue;
+}
+
+.module-eight-step-seq-slider {
+	width:13rem;
+	margin:1rem;
+}
+
+.module-eight-step-seq-slider.module-eight-step-seq-clock-slider {
+	width:7rem;
+}
+
+.module-eight-step-seq-slider input {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 100%; /* Full-width */
+  height: 4px; /* Specified height */
+  background: #d3d3d3; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+}
+
+.module-eight-step-seq-slider input:hover {
+  opacity:1;
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */ 
+.module-eight-step-seq-slider input::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 12px; /* Set a specific slider handle width */
+    height: 25px; /* Slider handle height */
+    background: #666; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+}
+
+.module-eight-step-seq-slider input::-moz-range-thumb {
+    width: 12px; /* Set a specific slider handle width */
+    height: 25px; /* Slider handle height */
+    background: #666; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+}
+
+.module-eight-step-seq-slider input.active::-webkit-slider-thumb {
+    background: red; /* Green background */
+    box-shadow: 0 0 20px red;
+}
+
+.module-eight-step-seq-slider input.active::-moz-range-thumb {
+    background: red; /* Green background */
+    box-shadow: 0 0 20px red;
+}
+
+.module-eight-step-seq-clock {
+	text-align: center;
+	width:7rem;
+	float:left;
+	margin-left:1rem;
+}
+
+.module-eight-step-seq-clock label {
+	margin-bottom:.5rem;
+}
+
+.module-eight-step-seq-clock .module-eight-step-seq-clock-slider {
+	margin:0;
+}
+
+.module-eight-step-seq-sync {
+	width:4rem;
+	float:right;
+	text-align: center;
+	margin-right:1rem;
+}
+
+.module-eight-step-seq-sync div {
+	width:1.5rem;
+	height:1.5rem;
+	background:red;
+	border-radius: 50%;
+	margin:.5rem auto;
+	cursor:pointer;
+}
+
+.module-eight-step-seq-ports {
+	clear:both;
+	text-align: center;
+	padding-top:.5rem;
+}
+
+.module-eight-step-seq-ports .port {
+	border:2px solid #ccc;
+	margin:.2rem auto;
 }

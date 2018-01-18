@@ -63,7 +63,6 @@ class Port extends Component {
     return(
       <div className={"port" + (this.state.cable ? ' port-connected port-outer_'+this.state.cable.state.outerColor : '')} onClick={this.handlePortConnect} ref={(ele) => this.myDiv = ele}>
         <div className={"port-inner"+ (this.state.cable ? ' port-connected port-inner_'+this.state.cable.state.innerColor : '')}></div>
-        {renderedContent}
       </div>
     );
   };
