@@ -9,7 +9,7 @@ Initially created as a personal project to learn React, I decided to turn this i
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app). For all major deployment instructions check the guide [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
 ## Version
-0.0.1
+0.0.3
 
 ## Getting Started
 
@@ -20,13 +20,21 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 See the Create React App [guide](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md) for more information.
 
+## Current Modules
+
+Below are the modules currently available, and below that is the roadmap for the future!
+
+- rsvco - basic vco
+- rsvcf - basic filter (no cv control yet but coming soon)
+- 8Step - 8 step sequencer to control a vco
+- mx-101 - basic 4 line mixer with gain control for each line
+
 ## Roadmap
 
 This project is in its very early stages. Right now it's little more than a tone generator but eventually I hope for it to be a fun piece of software to create new sounds, learn the basics of synthesis, and even create some pretty killer tracks. That all being said I have a few ideas for the next steps and where my intention to take the project is.
 
 - More modules, some of which are under development currently and some of which are just hopes for future dev
 	- ADSR Enveloper Generation
-	- Mixer (Under development currently)
 	- VCA
 	- Keyboard to CV/Gate
 	- Drum Sequencer
@@ -37,6 +45,7 @@ This project is in its very early stages. Right now it's little more than a tone
 
 ## Changelog
 
+- 0.0.3 mx-101 module added, standard knob built, but not yet in the right place or documented
 - 0.0.2 Ability to add modules, and fully designed initial modules
 - 0.0.1 First version with set 4 modules in place.
 

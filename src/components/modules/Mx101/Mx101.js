@@ -2,17 +2,19 @@ import React, { Component } from 'react';
 import Port from '../../core/Port/Port';
 import ReactOutsideEvent from '../../vendor/react-outside-event';
 import './Mx101.css';
+import StandardKnob from './controls/StandardKnob/StandardKnob';
+import knobImg from './img/custom_knob_bg.png';
 
 class Mx101 extends Component {
   constructor() {
     super();
     this.initialVolume = 50;
     this.state = {
-      gainNode_01:null,
-      gainNode_02:null,
-      gainNode_03:null,
-      gainNode_04:null,
-      outputNode:null,
+      gainNode_01:{},
+      gainNode_02:{},
+      gainNode_03:{},
+      gainNode_04:{},
+      outputNode:{},
     };
     // this.initialFreq = 400;
     // this.updateFineTuneFreq = this.updateFineTuneFreq.bind(this);
@@ -64,30 +66,53 @@ class Mx101 extends Component {
       outputNode:newOutputNode,
     });
   }
-  
 
+  handleKnob1Change(value) {
+    this.state.gainNode_01.gain.value = value;
+    this.forceUpdate();
+  }
+  handleKnob2Change(value) {
+    this.state.gainNode_02.gain.value = value;
+    this.forceUpdate();
+  }
+  handleKnob3Change(value) {
+    this.state.gainNode_03.gain.value = value;
+    this.forceUpdate();
+  }
+  handleKnob4Change(value) {
+    this.state.gainNode_04.gain.value = value;
+    this.forceUpdate();
+  }
 
   
   render() {
 
+    var value1 = this.state.gainNode_01.gain? this.state.gainNode_01.gain.value: 0;
+    var value2 = this.state.gainNode_02.gain? this.state.gainNode_02.gain.value: 0;
+    var value3 = this.state.gainNode_03.gain? this.state.gainNode_03.gain.value: 0;
+    var value4 = this.state.gainNode_04.gain? this.state.gainNode_04.gain.value: 0;
+
     return(
       <div className="module mx101">
-        <h4>Mx-101</h4>
-        <label>in 1
-            <Port type="input" contentType="audioNode" content={this.state.gainNode_01} handlePortConnect={this.props.handlePortConnect}  />
-        </label>
-        <label>in 2
-            <Port type="input" contentType="audioNode" content={this.state.gainNode_02} handlePortConnect={this.props.handlePortConnect}  />
-        </label>
-        <label>in 3
-            <Port type="input" contentType="audioNode" content={this.state.gainNode_03} handlePortConnect={this.props.handlePortConnect}  />
-        </label>
-        <label>in 4
-            <Port type="input" contentType="audioNode" content={this.state.gainNode_04} handlePortConnect={this.props.handlePortConnect}  />
-        </label>
-        <label>output
+        <div className="module-mx101-cluster">
+          <div className="module-mx101-cluster-port"><Port type="input" contentType="audioNode" content={this.state.gainNode_01} handlePortConnect={this.props.handlePortConnect}  /></div>
+          <div className="module-mx101-cluster-knob"><StandardKnob img={"url("+knobImg+")"} size={42} minValue={0} maxValue={1} sensitivity={0.01} dragRange={100} value={value1} handleKnobChange={this.handleKnob1Change.bind(this)} /></div>
+        </div>
+        <div className="module-mx101-cluster">
+          <div className="module-mx101-cluster-port"><Port type="input" contentType="audioNode" content={this.state.gainNode_02} handlePortConnect={this.props.handlePortConnect}  /></div>
+          <div className="module-mx101-cluster-knob"><StandardKnob img={"url("+knobImg+")"} size={42} minValue={0} maxValue={1} sensitivity={0.01} dragRange={100} value={value2} handleKnobChange={this.handleKnob2Change.bind(this)} /></div>
+        </div>
+        <div className="module-mx101-cluster">
+          <div className="module-mx101-cluster-port"><Port type="input" contentType="audioNode" content={this.state.gainNode_03} handlePortConnect={this.props.handlePortConnect}  /></div>
+          <div className="module-mx101-cluster-knob"><StandardKnob img={"url("+knobImg+")"} size={42} minValue={0} maxValue={1} sensitivity={0.01} dragRange={100} value={value3} handleKnobChange={this.handleKnob3Change.bind(this)} /></div>
+        </div>
+        <div className="module-mx101-cluster">
+          <div className="module-mx101-cluster-port"><Port type="input" contentType="audioNode" content={this.state.gainNode_04} handlePortConnect={this.props.handlePortConnect}  /></div>
+          <div className="module-mx101-cluster-knob"><StandardKnob img={"url("+knobImg+")"} size={42} minValue={0} maxValue={1} sensitivity={0.01} dragRange={100} value={value4} handleKnobChange={this.handleKnob4Change.bind(this)} /></div>
+        </div>
+        <div className="module-mx101-cluster-output">
             <Port type="output" contentType="audioNode" content={this.state.outputNode} handlePortConnect={this.props.handlePortConnect}  />
-        </label>
+        </div>
       </div>
     );
   };

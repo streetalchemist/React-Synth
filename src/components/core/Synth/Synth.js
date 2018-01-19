@@ -37,7 +37,7 @@ class Synth extends Component {
           type:'vcf',
         },
         {
-          type:'eightStepSeq',
+          type:'mx101',
         }
       ],
       modulePicker:this.moduleTypes[0].type,

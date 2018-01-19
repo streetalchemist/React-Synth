@@ -1,0 +1,42 @@
+.module.mx101 {
+	width: 5rem;
+	background-image: url(./img/mix-101_bg.png);
+	background-size:contain;
+	background-repeat:no-repeat;
+	color:#ccc;
+	font-weight:300;
+}
+
+.module-mx101-cluster {
+	position:relative;
+	height:6.25rem;
+}
+
+.module-mx101-cluster-port {
+	position:absolute;
+	left:.3rem;
+	top:3.2rem;
+}
+
+.module-mx101-cluster-port .port {
+	width:1.5rem;
+	height:1.5rem;
+}
+
+.module-mx101-cluster-knob {
+	position:absolute;
+	right:.2rem;
+	top:1.08rem;
+	transform: rotate(-80deg);
+}
+
+.module-mx101-cluster-output {
+	position:relative;
+	left:2.8rem;
+	top:1.2rem;
+}
+
+.module-mx101-cluster-output .port {
+	width:1.5rem;
+	height:1.5rem;
+}
