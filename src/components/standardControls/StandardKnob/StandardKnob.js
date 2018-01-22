@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ReactOutsideEvent from '../../../../vendor/react-outside-event';
+import ReactOutsideEvent from '../../vendor/react-outside-event';
 import './StandardKnob.css';
 
 class StandardKnob extends Component {

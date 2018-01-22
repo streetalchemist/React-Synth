@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Port from '../../core/Port/Port';
 import ReactOutsideEvent from '../../vendor/react-outside-event';
 import './Mx101.css';
-import StandardKnob from './controls/StandardKnob/StandardKnob';
+import StandardKnob from '../../standardControls/StandardKnob/StandardKnob';
 import knobImg from './img/custom_knob_bg.png';
 
 class Mx101 extends Component {

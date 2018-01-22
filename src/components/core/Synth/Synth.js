@@ -24,6 +24,7 @@ class Synth extends Component {
       {name:"rsvcf - (vcf)",type:"vcf"},
       {name:"8 Step - (sequencer)",type:"eightStepSeq"},
       {name:"Mx-101 - (mixer)",type:"mx101"},
+      {name:"testModule - (testModule)",type:"testModule"},
     ];
     this.state = {
       modules:[

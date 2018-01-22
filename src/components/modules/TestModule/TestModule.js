@@ -7,18 +7,29 @@ class TestModule extends Component {
     this.changeValue = this.changeValue.bind(this);
     this.initialSendValue = 1000;
     this.state = {
-      sendValue: this.initialSendValue
+      sendValue: this.initialSendValue,
+      testLFO: 0,
     }
   }
   
   componentDidMount() {
-    
+    setInterval(this.updateLFO.bind(this), 1000);
   }
 
   changeValue(event) {
     this.setState({
       sendValue:event.target.value
     })
+  }
+
+  updateLFO() {
+    if(this.state.testLFO == -1) {
+      this.setState({testLFO:1});
+      console.log("lfo:",1);
+    } else {
+      this.setState({testLFO:-1});
+      console.log("lfo:",-1);
+    }
   }
   
   
@@ -33,6 +44,9 @@ class TestModule extends Component {
          <label>CV Out:
          <Port type="output" content={this.state.sendValue} contentType="value" handlePortConnect={this.props.handlePortConnect} />
          </label>
+        <label>Test LFO:
+          <Port type="output" contentType="value" content={this.state.testLFO} handlePortConnect={this.props.handlePortConnect} />
+        </label>
       </div>
     );
   };

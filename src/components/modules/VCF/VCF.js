@@ -1,23 +1,26 @@
 import React, { Component } from 'react';
 import Port from '../../core/Port/Port';
-import ReactOutsideEvent from '../../vendor/react-outside-event';
+import StandardKnob from '../../standardControls/StandardKnob/StandardKnob';
 import './VCF.css';
+import knobImg from './img/rsvcf_big_knob.png';
+import {clamp} from '../../core/helper';
 
 class VCF extends Component {
   constructor() {
     super();
     this.initialFreq = 0;
-    this.handleFrequenceyChange = this.handleFrequenceyChange.bind(this);
     this.handleTypeChange = this.handleTypeChange.bind(this);
-    this.knobSensitivity = 5;
-    this.knobMin = 0;
-    this.knobMax = 2000;
+    this.handleCVIn = this.handleCVIn.bind(this);
+    this.cutoffMin = 0;
+    this.cutoffMax = 3000;
     this.state = {
       filter:null,
       frequency:0,
       type:'lowpass',
       bigKnobActive:false,
       baseFrequency:0,
+      cvLevel:0,
+      cvInValue:0,
     };
   }
   
@@ -28,13 +31,6 @@ class VCF extends Component {
     this.setState({filter:newFilter});
   }
   
-  handleFrequenceyChange(event) {
-    this.state.filter.frequency.value = event.target.value;
-    this.setState({
-      frequency:event.target.value
-    });
-  }
-  
   handleTypeChange(event) {
     this.state.filter.type = event.target.value;
     this.setState({
@@ -42,79 +38,37 @@ class VCF extends Component {
     });
   }
 
-  knobClick(e) {
-    e.preventDefault();
-    console.log("clicked");
-    this.setState({
-      bigKnobActive:true,
-      baseFrequency:this.state.frequency,
-      mouseX:e.clientX,
-      mouseY:e.clientY,
-    });
+  handleFrequencyKnob(value) {
+    this.setState({frequency:value});
+    //this.state.filter.frequency.value = value;
   }
 
-  knobReleased(e) {
-    if(this.state.bigKnobActive) {
-      this.deactivateKnob();
-    }
+  handleCVKnobChange(value) {
+    console.log("CVIN:",value);
+    this.setState({cvLevel:value});
   }
 
-  knobMoved(e) {
-    if(this.state.bigKnobActive) {
-      this.moveKnob(e.clientX,e.clientY);
-    }
-  }
-
-  onOutsideEvent = (event) => {
-    if(this.state.bigKnobActive) {
-      if (event.type === 'mouseup') {
-        this.deactivateKnob();
-      } else if (event.type === 'mousemove') {
-        this.moveKnob(event.clientX,event.clientY);
-      }
-    }
-  }
-
-  moveKnob(currentX,currentY) {
-    var diffX = currentX - this.state.mouseX;
-    var diffY = currentY - this.state.mouseY;
-    var newFreq;
-    if(Math.abs(diffX) >= Math.abs(diffY)) {
-      newFreq = this.state.baseFrequency+(diffX*this.knobSensitivity);
-    } else {
-      newFreq = this.state.baseFrequency-(diffY*this.knobSensitivity);
-    }
-    if(newFreq > this.knobMax) {
-      newFreq = this.knobMax;
-    }
-
-    if(newFreq < this.knobMin) {
-      newFreq = this.knobMin;
-    }
-    console.log(newFreq);
-    this.setState({frequency:newFreq});
-    this.state.filter.frequency.value = newFreq;
-  }
-
-  deactivateKnob() {
-    console.log("KNOB RELEASED");
-    this.setState({bigKnobActive:false});
+  handleCVIn(newCV) {
+    console.log("NEWCV1:",newCV);
+    this.setState({cvInValue:newCV});
   }
   
   render() {
 
-    var knobAngle = ((this.state.frequency)*280/2000)-140; //x to 140
-    var knobRotate = "rotate("+knobAngle+"deg)";
-    var knobStyle = {transform:knobRotate};
+    var finalCutoffFrequency = this.state.frequency + (this.state.cvInValue*this.state.cvLevel);
+    finalCutoffFrequency = clamp(finalCutoffFrequency,this.cutoffMin,this.cutoffMax);
+    if(this.state.filter) {
+      this.state.filter.frequency.value = finalCutoffFrequency;
+    }
 
     return(
 
-      <div className="module vcf" onMouseUp={this.knobReleased.bind(this)} onMouseMove={this.knobMoved.bind(this)}>
+      <div className="module vcf">
         <div className="module-vcf-knob-holder">
-          <div className="module-vcf-frequency-knob" style={knobStyle} onMouseDown={this.knobClick.bind(this)}></div>
+          <StandardKnob img={"url("+knobImg+")"}  size={74} minValue={this.cutoffMin} maxValue={this.cutoffMax} sensitivity={5} dragRange={140} value={this.state.frequency} handleKnobChange={this.handleFrequencyKnob.bind(this)} />
         </div>
         <div className="module-vcf-cutoff-holder">cutoff
-          <div className="module-vcf-cutoff-counter">{this.state.frequency}</div>
+          <div className="module-vcf-cutoff-counter">{finalCutoffFrequency}</div>
         </div>
         <div className="module-vcf-type-set">
           <label className="module-vcf-radio">
@@ -130,6 +84,16 @@ class VCF extends Component {
             <span className="module-vcf-radio-checkmark"></span>
           </label>
         </div>
+        <div className="module-vcf-cv-cutoff">
+          <div className="module-vcf-cv-cutoff-port">
+            <label>cv in</label>
+            <Port type="input" contentType="value" handlePortConnect={this.props.handlePortConnect} handleDataChange={this.handleCVIn} />
+          </div>
+          <div className="module-vcf-cv-cutoff-knob">
+            <label>level</label>
+            <StandardKnob img={"url("+knobImg+")"}  size={34} minValue={0} maxValue={2000} sensitivity={5} dragRange={140} value={this.state.cvLevel} handleKnobChange={this.handleCVKnobChange.bind(this)} />
+          </div>
+        </div>
         <div className="module-vcf-ports">
           <label>in
             <Port type="input" contentType="audioNode" content={this.state.filter} handlePortConnect={this.props.handlePortConnect} />
@@ -143,4 +107,4 @@ class VCF extends Component {
   };
 }
 
-export default ReactOutsideEvent(VCF, ['mousemove','mouseup']);
+export default VCF;

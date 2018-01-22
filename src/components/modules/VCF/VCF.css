@@ -103,6 +103,25 @@
 	background: #000;
 }
 
+.module-vcf-cv-cutoff {
+	margin-top:1rem;
+}
+
+.module-vcf-cv-cutoff label {
+	margin-bottom:.5rem;
+}
+
+.module-vcf-cv-cutoff-port {
+	float:left;
+	width:3rem;
+	margin-left:1rem;
+}
+
+.module-vcf-cv-cutoff-knob {
+	float:right;
+	width:3rem;
+}
+
 
 
 
