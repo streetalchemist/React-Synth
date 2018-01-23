@@ -65,7 +65,7 @@ class VCF extends Component {
 
       <div className="module vcf">
         <div className="module-vcf-knob-holder">
-          <StandardKnob img={"url("+knobImg+")"}  size={74} minValue={this.cutoffMin} maxValue={this.cutoffMax} sensitivity={5} dragRange={140} value={this.state.frequency} handleKnobChange={this.handleFrequencyKnob.bind(this)} />
+          <StandardKnob img={"url("+knobImg+")"}  size={74} minValue={this.cutoffMin} maxValue={this.cutoffMax} sensitivity={10} dragRange={140} value={this.state.frequency} handleKnobChange={this.handleFrequencyKnob.bind(this)} />
         </div>
         <div className="module-vcf-cutoff-holder">cutoff
           <div className="module-vcf-cutoff-counter">{finalCutoffFrequency}</div>
@@ -91,7 +91,7 @@ class VCF extends Component {
           </div>
           <div className="module-vcf-cv-cutoff-knob">
             <label>level</label>
-            <StandardKnob img={"url("+knobImg+")"}  size={34} minValue={0} maxValue={2000} sensitivity={5} dragRange={140} value={this.state.cvLevel} handleKnobChange={this.handleCVKnobChange.bind(this)} />
+            <StandardKnob img={"url("+knobImg+")"}  size={34} minValue={0} maxValue={2000} sensitivity={10} dragRange={140} value={this.state.cvLevel} handleKnobChange={this.handleCVKnobChange.bind(this)} />
           </div>
         </div>
         <div className="module-vcf-ports">
