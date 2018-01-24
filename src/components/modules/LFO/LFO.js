@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import Port from '../../core/Port/Port';
+import StandardSlider from '../../standardControls/StandardSlider/StandardSlider';
 import './LFO.css';
 
 class LFO extends Component {
   constructor() {
     super();
     this.initialFreq = 0;
-    this.changeFreq = this.changeFreq.bind(this);
     this.state = {
       sineOscillator:null,
       sineAnalyser:null,
@@ -24,11 +24,10 @@ class LFO extends Component {
     }
   }
 
-  changeFreq(event) {
+  handleSpeedSlider(value) {
     this.setState({
-      frequency:event.target.value,
-    });
-    console.log(event.target.value);
+      frequency:value
+    })
   }
   
   componentDidMount() {
@@ -140,19 +139,14 @@ class LFO extends Component {
     }
 
     var isActive = false;
-    if(this.state.sineData > .8) {
+    if(this.state.squareData > .8) {
       isActive = true;
     }
-
-
-
 
     return(
       <div className="module lfo">
         <div className="module-lfo-slider-holder">
-          <div className="standard-slider standard-slider-vertical module-lfo-freq-slider">
-            <input className={""+(isActive == true ? ' active' : '')} type="range" min="0" max="10" step=".01" defaultValue={this.initialFreq} onChange={this.changeFreq} />
-          </div>
+          <StandardSlider active={isActive} length={140} minValue={0} maxValue={10} sensitivity={0.01} orientation={"vertical"} value={this.state.frequency} handleSliderChange={this.handleSpeedSlider.bind(this)} />
         </div>
         <div className="module-lfo-ports-holder">
           <Port type="output" contentType="value" content={this.state.sineData} handlePortConnect={this.props.handlePortConnect} />

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Port from '../../core/Port/Port';
+import StandardSlider from '../../standardControls/StandardSlider/StandardSlider';
 import './EightStepSeq.css';
 
 class EightStepSeq extends Component {

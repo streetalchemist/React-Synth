@@ -44,6 +44,8 @@ class Synth extends Component {
         },
         {
           type:'mx101',
+        }, {
+          type:'eightStepSeq',
         }
       ],
       modulePicker:this.moduleTypes[0].type,

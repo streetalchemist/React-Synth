@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import Port from '../../core/Port/Port';
+import StandardSlider from '../../standardControls/StandardSlider/StandardSlider';
 import './MainOut.css';
 
 class MainOut extends Component {
   constructor() {
     super();
-    this.changeVolume = this.changeVolume.bind(this);
     this.handlePower = this.handlePower.bind(this);
-    this.initialVolume = 30;
     this.state = {
+      volume:0.3,
       gainNode:null,
       isPowered:true,
     };
@@ -17,12 +17,12 @@ class MainOut extends Component {
   componentDidMount() {
     var newGainNode = this.props.ctx.createGain();
     newGainNode.connect(this.props.ctx.destination);
-    newGainNode.gain.value = this.initialVolume/100;
+    newGainNode.gain.value = this.state.volume;
     this.setState({gainNode:newGainNode});
   }
-  
-  changeVolume(event) {
-    this.state.gainNode.gain.value = event.target.value/100;
+
+  handleVolumeSlider(value) {
+    this.setState({volume:value});
   }
 
   handlePower(event) {
@@ -36,6 +36,10 @@ class MainOut extends Component {
   }
   
   render() {
+    if(this.state.gainNode) {
+      this.state.gainNode.gain.value = this.state.volume;
+    }
+
     return (
       <div className="module main-out">
         <h4>Main</h4>
@@ -48,8 +52,8 @@ class MainOut extends Component {
           <span className="checkmark"></span>
         </label>
         <label className="main-out-centered-label main-out-gain-label">gain</label>
-        <div className="standard-slider standard-slider-vertical main-out-slider-gain">
-          <input type="range" name="volume" min="0" max="100" step="1" defaultValue={this.initialVolume} onChange={this.changeVolume} />
+        <div className="module-main-out-slider-holder">
+          <StandardSlider length={200} minValue={0} maxValue={1} sensitivity={.01} orientation={"vertical"} value={this.state.volume} handleSliderChange={this.handleVolumeSlider.bind(this)} />
         </div>
         <div className="main-out-ports">
           <label>input
