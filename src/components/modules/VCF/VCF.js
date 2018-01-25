@@ -50,7 +50,7 @@ class VCF extends Component {
 
   handleCVIn(newCV) {
     console.log("NEWCV1:",newCV);
-    this.setState({cvInValue:newCV});
+    this.setState({cvInValue:(newCV*2)-1});
   }
   
   render() {

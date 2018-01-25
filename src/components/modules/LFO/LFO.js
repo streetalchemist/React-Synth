@@ -90,7 +90,7 @@ class LFO extends Component {
       bufferLength = this.state.sineAnalyser.frequencyBinCount;
       dataArray = new Uint8Array(bufferLength);
       this.state.sineAnalyser.getByteTimeDomainData(dataArray);
-      var sineData = (dataArray[0] - 128) / 256 * 2;
+      var sineData = dataArray[0] / 256;
       this.setState({sineData:sineData});
     }
 
