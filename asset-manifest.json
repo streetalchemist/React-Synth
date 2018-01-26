@@ -1,11 +1,13 @@
 {
-  "main.css": "static/css/main.ff441be6.css",
-  "main.css.map": "static/css/main.ff441be6.css.map",
-  "main.js": "static/js/main.19072188.js",
-  "main.js.map": "static/js/main.19072188.js.map",
+  "main.css": "static/css/main.da05af56.css",
+  "main.css.map": "static/css/main.da05af56.css.map",
+  "main.js": "static/js/main.c890490e.js",
+  "main.js.map": "static/js/main.c890490e.js.map",
+  "static/media/adsrock_bg.png": "static/media/adsrock_bg.e5a5baac.png",
   "static/media/carbon_fiber.png": "static/media/carbon_fiber.84d4ddb7.png",
   "static/media/eightstep_bg.png": "static/media/eightstep_bg.a52e1a8a.png",
   "static/media/mix-101_bg.png": "static/media/mix-101_bg.b3def9a7.png",
   "static/media/rsvcf_bg.png": "static/media/rsvcf_bg.3e1360c3.png",
-  "static/media/rsvco_bg.png": "static/media/rsvco_bg.61a86d12.png"
+  "static/media/rsvco_bg.png": "static/media/rsvco_bg.61a86d12.png",
+  "static/media/vca202_bg.png": "static/media/vca202_bg.3fb03da4.png"
 }
