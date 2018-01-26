@@ -1,0 +1,122 @@
+.module.adsrock {
+	width: 15rem;
+	background-image:url(./img/adsrock_bg.png);
+	background-size:contain;
+}
+
+.module-adsrock-screen {
+	margin-top:2.78rem;
+	margin-left:1.5rem;
+	position:relative;
+}
+
+.module-adsrock-screen p {
+	color:#364210;
+	position:absolute;
+	bottom:0.5rem;
+	left:1rem;
+	font-size:.8rem;
+}
+
+.module-adsrock-knobs {
+	margin-top:1.5rem;
+}
+
+.module-adsrock-knob {
+	display:inline-block;
+	width:7.5rem;
+	margin-top:2.5rem;
+}
+
+.module-adsrock-knob .standard-knob {
+	margin:0 auto;
+}
+
+.module-adsrock-ports {
+	position:absolute;
+	bottom:2rem;
+	text-align:center;
+	width:100%;
+}
+
+.module-adsrock-ports label {
+	width:6rem;
+	display:inline-block;
+}
+
+.module-adsrock-ports .port {
+	margin:0 auto;
+}
+
+.module-adsrock-time-set {
+	position:absolute;
+	top:13.2rem;
+	left:1rem;
+}
+
+.module-adsrock-time-radio {
+	display: inline-block;
+    position: relative;
+    padding:0;
+    margin:0;
+    width:2rem;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    margin-right:2.3rem;
+    margin-left:.7rem;
+}
+
+.module-adsrock-time-radio:last-child {
+	margin-right:0;
+}
+
+.module-adsrock-time-radio input {
+    position: relative;
+    margin:0;
+    padding:0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.module-adsrock-time-radio-checkmark {
+	position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #555;
+    border-radius: 50%;
+    margin:0 auto;
+}
+
+.module-adsrock-time-radio:hover input ~ .module-adsrock-time-radio-checkmark {
+    background-color: #e4f5b6;
+}
+
+.module-adsrock-time-radio input:checked ~ .module-adsrock-time-radio-checkmark {
+    background-color: #e4f5b6;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.module-adsrock-time-radio-checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.module-adsrock-time-radio input:checked ~ .module-adsrock-time-radio-checkmark:after {
+    display: block;
+}
+
+.module-adsrock-time-radio .module-adsrock-time-radio-checkmark:after {
+ 	top: 5px;
+	left: 5px;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: #000;
+}

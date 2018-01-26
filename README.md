@@ -9,7 +9,7 @@ Initially created as a personal project to learn React, I decided to turn this i
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app). For all major deployment instructions check the guide [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
 ## Version
-0.0.4
+0.0.5
 
 ## Getting Started
 
@@ -29,14 +29,14 @@ Below are the modules currently available, and below that is the roadmap for the
 - rslfo - basic lfo
 - 8Step - 8 step sequencer to control a vco
 - mx-101 - basic 4 line mixer with gain control for each line
+- vca-202 - Dual vca
+- adsrock - ADSR linear envelope generator
 
 ## Roadmap
 
 This project is in its very early stages. Right now it's little more than a tone generator but eventually I hope for it to be a fun piece of software to create new sounds, learn the basics of synthesis, and even create some pretty killer tracks. That all being said I have a few ideas for the next steps and where my intention to take the project is.
 
 - More modules, some of which are under development currently and some of which are just hopes for future dev
-	- ADSR Enveloper Generation
-	- VCA
 	- Keyboard to CV/Gate
 	- Drum Sequencer
 	- Quantizer
@@ -46,6 +46,7 @@ This project is in its very early stages. Right now it's little more than a tone
 
 ## Changelog
 
+- 0.0.5 adsrock and vca module added, also added port logic to check for NaN to prevent errors
 - 0.0.4 rslfo module added, standard knob moved to standardControls, standard slider created, rsvcf VC in and level added along with start of VC standard in the project
 - 0.0.3 mx-101 module added, standard knob built, but not yet in the right place or documented
 - 0.0.2 Ability to add modules, and fully designed initial modules

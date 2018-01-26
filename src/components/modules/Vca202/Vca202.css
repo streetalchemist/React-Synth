@@ -1,0 +1,69 @@
+.module.vca202 {
+	width: 5rem;
+	background-image: url(./img/vca202_bg.png);
+	background-size:contain;
+	background-repeat:no-repeat;
+	color:#ccc;
+	font-weight:300;
+}
+
+.module-vca202-cluster-a {
+	position:relative;
+	height:16rem;
+}
+
+.module-vca202-cluster-b {
+	position:relative;
+	margin-top:-2rem;
+}
+
+.module-vca202-cluster-port {
+	position:absolute;
+}
+
+.module-vca202-cluster-port .port {
+	width:1.5rem;
+	height:1.5rem;
+}
+
+.module-vca202-cluster-knob {
+	position:absolute;
+	right:.2rem;
+	top:1.08rem;
+	transform: rotate(-80deg);
+}
+
+.module-vca202-cluster-output {
+	position:relative;
+	left:2.8rem;
+	top:1.2rem;
+}
+
+.module-vca202-cluster-knob-level {
+	position:absolute;
+	top:47px;
+	right:5px;
+}
+
+.module-vca202-cluster-knob-gain {
+	position:absolute;
+	top:142px;
+	right:5px;
+	transform: rotate(-80deg);
+}
+
+.module-vca202-cluster-port-in {
+	top:105px;
+	left:6px;
+}
+
+.module-vca202-cluster-port-cvin {
+	top:105px;
+	right:6px;
+}
+
+.module-vca202-cluster-port-out {
+	top:218px;
+	right:5px;
+}
+

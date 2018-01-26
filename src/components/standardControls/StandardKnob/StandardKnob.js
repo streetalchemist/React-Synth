@@ -68,10 +68,7 @@ class StandardKnob extends Component {
       newValue = this.props.minValue;
     }
 
-    //console.log(newValue);
     this.props.handleKnobChange(newValue);
-    // this.setState({frequency:newFreq});
-    // this.state.filter.frequency.value = newFreq;
   }
 
   deactivateKnob() {
@@ -81,7 +78,6 @@ class StandardKnob extends Component {
   render() {
 
     var knobAngle = ((this.props.value)*(this.props.dragRange*2)/(this.props.maxValue - this.props.minValue))-this.props.dragRange; //x to 140
-    console.log("angle",knobAngle);
     var knobRotate = "rotate("+knobAngle+"deg)";
     var knobHolderStyle = {
     }

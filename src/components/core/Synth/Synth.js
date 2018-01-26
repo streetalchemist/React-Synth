@@ -7,6 +7,8 @@ import PatchCable from '../PatchCable/PatchCable';
 import EightStepSeq from '../../modules/EightStepSeq/EightStepSeq';
 import Mx101 from '../../modules/Mx101/Mx101';
 import LFO from '../../modules/LFO/LFO';
+import ADSRock from '../../modules/ADSRock/ADSRock';
+import Vca202 from '../../modules/Vca202/Vca202';
 import './Synth.css';
 
 class Synth extends Component {
@@ -26,6 +28,8 @@ class Synth extends Component {
       {name:"rslfo - (lfo)",type:"lfo"},
       {name:"8 Step - (sequencer)",type:"eightStepSeq"},
       {name:"Mx-101 - (mixer)",type:"mx101"},
+      {name:"Vca-202 - (vca)",type:"vca202"},
+      {name:"ADSRock - (envelope generator)",type:"adsrock"},
       {name:"testModule - (testModule)",type:"testModule"},
     ];
     this.state = {
@@ -44,8 +48,15 @@ class Synth extends Component {
         },
         {
           type:'mx101',
-        }, {
+        }, 
+        {
+          type:'vca202',
+        }, 
+        {
           type:'eightStepSeq',
+        },
+        {
+          type:'adsrock',
         }
       ],
       modulePicker:this.moduleTypes[0].type,
@@ -104,6 +115,10 @@ class Synth extends Component {
           return <EightStepSeq key={index} ctx={this.audioCtx} handlePortConnect={this.handlePortConnect} />;
         case 'mx101':
           return <Mx101 key={index} ctx={this.audioCtx} handlePortConnect={this.handlePortConnect} />;
+        case 'vca202':
+          return <Vca202 key={index} ctx={this.audioCtx} handlePortConnect={this.handlePortConnect} />;
+        case 'adsrock':
+          return <ADSRock key={index} ctx={this.audioCtx} handlePortConnect={this.handlePortConnect} />;
         default:
           return '';
       }

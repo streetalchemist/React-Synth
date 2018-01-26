@@ -98,7 +98,7 @@ class LFO extends Component {
       bufferLength = this.state.triangleAnalyser.frequencyBinCount;
       dataArray = new Uint8Array(bufferLength);
       this.state.triangleAnalyser.getByteTimeDomainData(dataArray);
-      var triangleData = (dataArray[0] - 128) / 256 * 2;
+      var triangleData = dataArray[0] / 256;
       this.setState({triangleData:triangleData});
     }
 
@@ -106,7 +106,7 @@ class LFO extends Component {
       bufferLength = this.state.sawtoothAnalyser.frequencyBinCount;
       dataArray = new Uint8Array(bufferLength);
       this.state.sawtoothAnalyser.getByteTimeDomainData(dataArray);
-      var sawtoothData = (dataArray[0] - 128) / 256 * 2;
+      var sawtoothData = dataArray[0] / 256;
       this.setState({sawtoothData:sawtoothData});
     }
 
@@ -114,7 +114,7 @@ class LFO extends Component {
       bufferLength = this.state.squareAnalyser.frequencyBinCount;
       dataArray = new Uint8Array(bufferLength);
       this.state.squareAnalyser.getByteTimeDomainData(dataArray);
-      var squareData = (dataArray[0] - 128) / 256 * 2;
+      var squareData = dataArray[0] / 256;
       this.setState({squareData:squareData});
     }
 
