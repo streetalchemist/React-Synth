@@ -90,6 +90,11 @@ class PatchCable extends Component {
 
     this.props.portA.updateCable(null);
     this.props.portB.updateCable(null);
+
+    if(this.state.outputPort != null) {
+      console.log("DISCONNECTING");
+      this.handleValueInput(0);
+    }
     this.props.unmountMe(this);
 
   }

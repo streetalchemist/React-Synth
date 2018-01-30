@@ -18,6 +18,26 @@
 	font-size:.8rem;
 }
 
+.module-adsrock-activedot-outline {
+	width:1rem;
+	height:1rem;
+	position:absolute;
+	top:.5rem;
+	right:2rem;
+	border:1px solid #9fb461;
+	border-radius:50%;
+}
+
+.module-adsrock-activedot {
+	width:.85rem;
+	height:.85rem;
+	position:absolute;
+	top:.65rem;
+	right:2.15rem;
+	background:#f25d5d;
+	border-radius:50%;
+}
+
 .module-adsrock-knobs {
 	margin-top:1.5rem;
 }

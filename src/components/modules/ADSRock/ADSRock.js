@@ -26,9 +26,11 @@ class ADSRock extends Component {
       totalTime:0,
       trigger:false,
       triggeredTime:new Date(),
+      releasedTime:new Date(),
       active:false,
       gateThreshold:0.8,
       currentTimeSetting:'low',
+      currentPhase:'idle',
     }
   }
 
@@ -86,6 +88,9 @@ class ADSRock extends Component {
       }
       this.setState({valueGate:1});
     } else {
+      this.setState({
+        releasedTime:new Date()
+      });
       this.setState({valueGate:0});
     }
   }
@@ -94,19 +99,20 @@ class ADSRock extends Component {
     //Get times for each stage
     var attackTime = this.state.valueAttack*this[this.state.currentTimeSetting+"TimeMultiplier"];
     var decayTime = this.state.valueDecay*this[this.state.currentTimeSetting+"TimeMultiplier"];
-    var sustainTime = this.state.valueSustain*this[this.state.currentTimeSetting+"TimeMultiplier"];
+    //var sustainTime = this.state.valueSustain*this[this.state.currentTimeSetting+"TimeMultiplier"];
+    var sustainTimePlaceholder = 1*this[this.state.currentTimeSetting+"TimeMultiplier"];
     var releaseTime = this.state.valueRelease*this[this.state.currentTimeSetting+"TimeMultiplier"];
-    var totalTime = attackTime + decayTime + sustainTime + releaseTime;
+    var totalTime = attackTime + decayTime + sustainTimePlaceholder + releaseTime;
 
     var decayThreshold = attackTime;
     var sustainThreshold = decayThreshold + decayTime;
-    var releaseThreshold = sustainThreshold + sustainTime;
+    //var releaseThreshold = sustainThreshold + sustainTime;
 
     //Calculate linear slopes
     var aAttack = (this.peakAmp - this.startAmp) / attackTime;
-    var aDecay = (this.sustainAmp - this.peakAmp) / decayTime;
+    var aDecay = (this.state.valueSustain - this.peakAmp) / decayTime;
     var aSustain = 0;
-    var aRelease = (this.endAmp - this.sustainAmp) / releaseTime;
+    var aRelease = (this.endAmp - this.state.valueSustain) / releaseTime;
 
     if(isNaN(aAttack)) {
       aAttack = 0;
@@ -129,12 +135,12 @@ class ADSRock extends Component {
     this.setState({
       attackTime:attackTime,
       decayTime:decayTime,
-      sustainTime:sustainTime,
+      //sustainTime:sustainTime,
       releaseTime:releaseTime,
-      totalTime:totalTime,
+      //totalTime:totalTime,
       decayThreshold:decayThreshold,
       sustainThreshold:sustainThreshold,
-      releaseThreshold:releaseThreshold,
+      //releaseThreshold:releaseThreshold,
       linSlopeAttack:aAttack,
       linSlopeDecay:aDecay,
       linSlopeSustain:aSustain,
@@ -156,7 +162,7 @@ class ADSRock extends Component {
 
     var attackAmt = attackTime/totalTime*(width-offset.x);
     var decayAmt = decayTime/totalTime*(width-offset.x);
-    var sustainAmt = sustainTime/totalTime*(width-offset.x);
+    var sustainAmt = sustainTimePlaceholder/totalTime*(width-offset.x);
     var releaseAmt = releaseTime/totalTime*(width-offset.x);
 
     //Draw Graph
@@ -190,18 +196,18 @@ class ADSRock extends Component {
     //DecayPath
     ctx.beginPath();
     ctx.moveTo(offset.x+attackAmt+offset.total,(offset.y-this.peakAmp*offset.y)+offset.total);
-    ctx.lineTo(offset.x+attackAmt+decayAmt+offset.total,(offset.y-this.sustainAmp*offset.y)+offset.total);
+    ctx.lineTo(offset.x+attackAmt+decayAmt+offset.total,(offset.y-this.state.valueSustain*offset.y)+offset.total);
     ctx.stroke();
 
     //SustainPath
     ctx.beginPath();
-    ctx.moveTo(offset.x+attackAmt+decayAmt+offset.total,(offset.y-this.sustainAmp*offset.y)+offset.total);
-    ctx.lineTo(offset.x+attackAmt+decayAmt+sustainAmt+offset.total,(offset.y-this.sustainAmp*offset.y)+offset.total);
+    ctx.moveTo(offset.x+attackAmt+decayAmt+offset.total,(offset.y-this.state.valueSustain*offset.y)+offset.total);
+    ctx.lineTo(offset.x+attackAmt+decayAmt+sustainAmt+offset.total,(offset.y-this.state.valueSustain*offset.y)+offset.total);
     ctx.stroke();
 
     //ReleasePath
     ctx.beginPath();
-    ctx.moveTo(offset.x+attackAmt+decayAmt+sustainAmt+offset.total,(offset.y-this.sustainAmp*offset.y)+offset.total);
+    ctx.moveTo(offset.x+attackAmt+decayAmt+sustainAmt+offset.total,(offset.y-this.state.valueSustain*offset.y)+offset.total);
     ctx.lineTo(offset.x+attackAmt+decayAmt+sustainAmt+releaseAmt+offset.total,offset.y+offset.total);
     ctx.stroke();
   }
@@ -217,13 +223,15 @@ class ADSRock extends Component {
         currentEnvelopeState = "attack";
       } else if (currentTime < this.state.sustainThreshold) {
         currentEnvelopeState = "decay";
-      } else if (currentTime < this.state.releaseThreshold) {
+      } else if (currentTime >= this.state.sustainThreshold && this.state.valueGate == 1) {
         currentEnvelopeState = "sustain";
-      } else {
+      }
+
+      if (this.state.valueGate == 0)
         currentEnvelopeState = "release";
       }
 
-      //Calculate output from ADSR values
+      // //Calculate output from ADSR values
       var outputValue = 0;
 
       switch(currentEnvelopeState) {
@@ -234,10 +242,10 @@ class ADSRock extends Component {
           outputValue = this.state.linSlopeDecay*(currentTime-this.state.decayThreshold) + this.peakAmp;
           break;
         case "sustain":
-          outputValue = this.sustainAmp;
+          outputValue = this.state.valueSustain;
           break;
         case "release":
-          outputValue = this.state.linSlopeRelease*(currentTime-this.state.releaseThreshold) + this.sustainAmp;
+          outputValue = this.state.linSlopeRelease*(new Date().getTime()-this.state.releasedTime.getTime()) + this.state.valueSustain;
           break;
       }
 
@@ -259,20 +267,22 @@ class ADSRock extends Component {
           valueOutput:outputValue
         });
       }
-    }
 
     requestAnimationFrame(this.computeOutput.bind(this));
   }
   
   render() {
 
-    var simpleTime = (this.state.totalTime/1000).toFixed(2);
+    //var simpleTime = (this.state.totalTime/1000).toFixed(2);
+    var timeRange = this[this.state.currentTimeSetting+"TimeMultiplier"]/1000;
 
     return(
       <div className="module adsrock">
         <div className="module-adsrock-screen">
           <canvas ref="adsrCanvas" width="190" height="130" />
-          <p>time: {simpleTime}s</p>
+          <p>Dial Range: 0s to {timeRange}s</p>
+          <div className="module-adsrock-activedot-outline"></div>
+          <div className={""+(this.state.active ? "module-adsrock-activedot":"")}></div>
         </div>
         <div className="module-adsrock-time-set">
           <label className="module-adsrock-time-radio">

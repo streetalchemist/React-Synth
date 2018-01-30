@@ -29,11 +29,14 @@ class Port extends Component {
   }
 
   handleValueInput(newContent) {
+    console.log("content:",newContent);
     var sendContent = newContent;
     if(isNaN(sendContent)) {
       sendContent = 0;
     }
-    this.props.handleDataChange(sendContent);
+    if(this.props.handleDataChange) {
+      this.props.handleDataChange(sendContent);
+    }
   }
 
   handleValueOutput(newContent) {
